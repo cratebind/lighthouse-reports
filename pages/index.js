@@ -19,7 +19,6 @@ const HomePage = () => {
   const [url, setUrl] = useState('');
   const [reportLoading, setReportLoading] = useState(false);
   const { loading, error, data } = useQuery(ALL_REPORTS_QUERY);
-  // console.log({ loading, error, data });
 
   if (error) return <div>Error</div>;
   if (loading || !data) return <div>Loading</div>;
@@ -43,6 +42,8 @@ const HomePage = () => {
         />
         {reportLoading && <div>Generating your report...</div>}
       </form>
+      {/* TODO: Show more data here to get information at a glance */}
+      {/* TODO: Group by URL */}
       {data.report.map(report => (
         <div key={report.id}>
           <a href={`/api/report/${report.id}`}>
