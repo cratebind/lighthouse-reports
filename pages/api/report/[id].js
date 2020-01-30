@@ -14,8 +14,6 @@ const getReport = `
 export default async (req, res) => {
   const { id } = req.query;
 
-  // const report = await generateReport(url);
-
   try {
     const data = await request(
       'https://hasura-server-test.herokuapp.com/v1/graphql',
@@ -26,6 +24,8 @@ export default async (req, res) => {
       }
     );
 
+    // TODO: Figure out an easier way to display the report, possibly using a component
+    // we're storing the entire HTML report, so we can send that directly to the client
     return res.send(data.report[0].html);
     // return res.json(data);
   } catch (error) {
